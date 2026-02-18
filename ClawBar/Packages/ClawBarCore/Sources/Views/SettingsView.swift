@@ -60,7 +60,7 @@ public struct SettingsView: View {
                 LabeledContent("Sessions", value: "\(state.openClawSessions.count) active")
             }
 
-            Section("Claude") {
+            Section {
                 LabeledContent("Status", value: state.claudeStatus.displayText)
                 if let usage = state.claudeUsage {
                     if let session = usage.session {
@@ -70,6 +70,22 @@ public struct SettingsView: View {
                         LabeledContent("Weekly", value: String(format: "%.0f%% used", weekly.percentUsed))
                     }
                 }
+                if state.claudeStatus == .tokenExpired || state.claudeStatus == .credentialsNotFound {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("To fix this, open Terminal and run:")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("claude auth login")
+                            .font(.system(.caption, design: .monospaced))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(.quaternary)
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                            .textSelection(.enabled)
+                    }
+                }
+            } header: {
+                Text("Claude")
             }
         }
         .formStyle(.grouped)
