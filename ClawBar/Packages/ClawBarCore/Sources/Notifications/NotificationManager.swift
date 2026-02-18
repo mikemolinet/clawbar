@@ -8,6 +8,7 @@ public final class NotificationManager {
     private var lastSessionPercents: [String: Double] = [:]  // per-session tracking
     private var cooldowns: [String: Date] = [:]
     private let cooldownInterval: TimeInterval = 900 // 15 minutes
+    public var soundsEnabled: Bool = true
 
     // Notification thread IDs for grouping
     private static let claudeThread = "claude-usage"
@@ -130,7 +131,7 @@ public final class NotificationManager {
         content.title = title
         content.body = body
         content.threadIdentifier = thread
-        if sound {
+        if sound, soundsEnabled {
             content.sound = .default
         }
 
