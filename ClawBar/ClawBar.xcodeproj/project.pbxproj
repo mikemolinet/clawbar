@@ -12,6 +12,7 @@
 		1180B34FAD2E4986212C825C /* ContextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */; };
 		193FA7806F9B41986A707589 /* ClaudeUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */; };
 		220D29A3F3C70AD01C4E6081 /* KeychainReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD734E91D0B8296533DA2EB /* KeychainReader.swift */; };
+		2575253A938BD093908F142E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF00AF305A44EA6B7630831 /* Assets.xcassets */; };
 		26452AB087F17B77BF95CCFB /* TokenUsageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46790F82182563279DC40F /* TokenUsageCard.swift */; };
 		4544956D5260E027EB6754A3 /* OpenClawContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3717B1F884C55796092016B /* OpenClawContext.swift */; };
 		458751A736594B1F63473454 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5219C940FDC9DBA057CF05E /* TimeFormatting.swift */; };
@@ -46,6 +47,7 @@
 		5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUsageData.swift; sourceTree = "<group>"; };
 		6954956F4C8C1695413C9AB7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BD734E91D0B8296533DA2EB /* KeychainReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReader.swift; sourceTree = "<group>"; };
+		6BF00AF305A44EA6B7630831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsage.swift; sourceTree = "<group>"; };
 		80B18A27F88C2A08C3D25C41 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		C0F01538B1A7667F1203A7CB = {
 			isa = PBXGroup;
 			children = (
+				DB12DC0373A5871426E4889F /* ClawBar */,
 				16D5A2627C5287064E672D55 /* Packages */,
 				1CF8FE142EC9C60AB0A472F0 /* Sources */,
 				4B57875E4A2F112E3A0A6203 /* Products */,
@@ -175,6 +178,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		DB12DC0373A5871426E4889F /* ClawBar */ = {
+			isa = PBXGroup;
+			children = (
+				6BF00AF305A44EA6B7630831 /* Assets.xcassets */,
+			);
+			path = ClawBar;
+			sourceTree = "<group>";
+		};
 		E9974670715591ABB7CD3FB8 /* MenuBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +203,7 @@
 			buildConfigurationList = 6C116DF85D42E9A75DE553A5 /* Build configuration list for PBXNativeTarget "ClawBar" */;
 			buildPhases = (
 				9631A078FD0BAD41EBEB4674 /* Sources */,
+				CF0D2B8EABA648C5A53359EF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +252,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF0D2B8EABA648C5A53359EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2575253A938BD093908F142E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9631A078FD0BAD41EBEB4674 /* Sources */ = {
