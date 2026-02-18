@@ -22,7 +22,6 @@
 		596E00665D74BAA40E437BCD /* ClaudeUsagePoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D57CF9F0D0372353C5ED9D /* ClaudeUsagePoller.swift */; };
 		5B9A2D02E267FAD98415944E /* AllSessionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5120D9329E821F30B1BDAC /* AllSessionsWindow.swift */; };
 		5E6DBAB79810E3C2F79094A3 /* ConfigReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912266BD835A8256DC46BFF /* ConfigReader.swift */; };
-		6A55E2EDEE4E02F73A594D6F /* CostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEC6BC322D996B2CE9A268 /* CostData.swift */; };
 		844BF85E91B2EFDB40ECC4B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4104911619B94A92250AECC8 /* AppState.swift */; };
 		B26F4075CC020484923DEEED /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */; };
 		B5D50F450D1B296A028B6621 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6954956F4C8C1695413C9AB7 /* SettingsView.swift */; };
@@ -30,7 +29,6 @@
 		BD134B3CDEA9F910374386B5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B18A27F88C2A08C3D25C41 /* NotificationManager.swift */; };
 		C33812D30514B41E202134D1 /* OpenClawCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */; };
 		C721B17E62AC14792370F3F6 /* ClawBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111765072C856B6C68A79807 /* ClawBarApp.swift */; };
-		E72388434EECC6191460B3E5 /* CostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6824BE81CCB5ACB99ADCD55D /* CostCard.swift */; };
 		E756BC430ACF603CD308E09B /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */; };
 		EFA10812A5B7A53B560FD089 /* OpenClawConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E26AF1845071F2BBD85DCF6 /* OpenClawConnection.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +36,6 @@
 /* Begin PBXFileReference section */
 		0E26AF1845071F2BBD85DCF6 /* OpenClawConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawConnection.swift; sourceTree = "<group>"; };
 		111765072C856B6C68A79807 /* ClawBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClawBarApp.swift; sourceTree = "<group>"; };
-		17DEC6BC322D996B2CE9A268 /* CostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostData.swift; sourceTree = "<group>"; };
 		1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawCard.swift; sourceTree = "<group>"; };
 		1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProgressBar.swift; sourceTree = "<group>"; };
 		2C915C0A7BAD33286067F63E /* ClawBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClawBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +44,6 @@
 		53D57CF9F0D0372353C5ED9D /* ClaudeUsagePoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsagePoller.swift; sourceTree = "<group>"; };
 		5E33243958DE06E929489AC7 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUsageData.swift; sourceTree = "<group>"; };
-		6824BE81CCB5ACB99ADCD55D /* CostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCard.swift; sourceTree = "<group>"; };
 		6954956F4C8C1695413C9AB7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BD734E91D0B8296533DA2EB /* KeychainReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReader.swift; sourceTree = "<group>"; };
 		75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
@@ -89,7 +85,6 @@
 			children = (
 				80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */,
 				75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */,
-				17DEC6BC322D996B2CE9A268 /* CostData.swift */,
 				A3717B1F884C55796092016B /* OpenClawContext.swift */,
 				5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */,
 			);
@@ -126,7 +121,6 @@
 				3F5120D9329E821F30B1BDAC /* AllSessionsWindow.swift */,
 				E79115D870B8B12F917C3D1B /* ClaudeUsageCard.swift */,
 				1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */,
-				6824BE81CCB5ACB99ADCD55D /* CostCard.swift */,
 				D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */,
 				1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */,
 				6954956F4C8C1695413C9AB7 /* SettingsView.swift */,
@@ -262,8 +256,6 @@
 				5E6DBAB79810E3C2F79094A3 /* ConfigReader.swift in Sources */,
 				E756BC430ACF603CD308E09B /* ConnectionStatus.swift in Sources */,
 				1180B34FAD2E4986212C825C /* ContextProgressBar.swift in Sources */,
-				E72388434EECC6191460B3E5 /* CostCard.swift in Sources */,
-				6A55E2EDEE4E02F73A594D6F /* CostData.swift in Sources */,
 				BCDAF0A94A5E311226CF410C /* DeviceIdentity.swift in Sources */,
 				5191B8B3251F25A9155C840F /* Errors.swift in Sources */,
 				52EA1446BFAD67FE6F2283B1 /* IconRenderer.swift in Sources */,

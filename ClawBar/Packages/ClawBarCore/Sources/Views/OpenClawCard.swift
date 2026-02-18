@@ -126,7 +126,8 @@ public struct OpenClawCard: View {
             ContextProgressBar(
                 percent: context.percentUsed,
                 tint: Self.openClawColor,
-                label: "\(context.sessionName) context"
+                label: "\(context.sessionName) context",
+                thresholdPercent: 90
             )
 
             HStack {
