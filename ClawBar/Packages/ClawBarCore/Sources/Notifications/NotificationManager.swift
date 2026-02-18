@@ -5,7 +5,7 @@ import UserNotifications
 public final class NotificationManager {
     private var lastClaudeSessionPercent: Double?
     private var lastClaudeWeeklyPercent: Double?
-    private var lastOpenClawMaxPercent: Double?
+    private var lastSessionPercents: [String: Double] = [:]  // per-session tracking
     private var cooldowns: [String: Date] = [:]
     private let cooldownInterval: TimeInterval = 900 // 15 minutes
 
@@ -75,46 +75,46 @@ public final class NotificationManager {
     }
 
     public func checkOpenClawSessions(_ sessions: [OpenClawContext]) {
-        guard let maxPercent = sessions.map(\.percentUsed).max() else { return }
+        for session in sessions {
+            let name = session.sessionName
+            let percent = session.percentUsed
+            let lastPercent = lastSessionPercents[name] ?? 0
 
-        // Compaction detected — large sudden drop (e.g. 80%+ → under 30%)
-        if let lastMax = lastOpenClawMaxPercent, lastMax >= 70, maxPercent < 30 {
-            // Find which session(s) compacted (compactionCount increased or percent dropped)
-            let compactedNames = sessions
-                .filter { $0.percentUsed < 30 }
-                .map { $0.sessionName }
-                .joined(separator: ", ")
+            // Compaction detected — large sudden drop for THIS session
+            if lastPercent >= 70, percent < 30 {
+                notify(
+                    id: "openclaw-compacted-\(name)",
+                    title: "\(name) — context compacted",
+                    body: "Dropped from \(Int(lastPercent))% → \(Int(percent))% (\(session.formattedTokens))",
+                    thread: Self.openClawThread
+                )
+            }
+            // Context critical (85%) — about to compact at 90%
+            else if percent >= 85, lastPercent < 85 {
+                notify(
+                    id: "openclaw-critical-\(name)",
+                    title: "\(name) — compaction imminent",
+                    body: "Context at \(Int(percent))% (\(session.formattedTokens))",
+                    thread: Self.openClawThread,
+                    sound: true
+                )
+            }
+            // Context high (75%) — compaction coming
+            else if percent >= 75, lastPercent < 75 {
+                notify(
+                    id: "openclaw-high-\(name)",
+                    title: "\(name) — compaction at 90%",
+                    body: "Context at \(Int(percent))% (\(session.formattedTokens))",
+                    thread: Self.openClawThread
+                )
+            }
 
-            notify(
-                id: "openclaw-context-compacted",
-                title: "Context compacted",
-                body: compactedNames.isEmpty ? "Context compressed to \(Int(maxPercent))%" : "\(compactedNames) — now at \(Int(maxPercent))%",
-                thread: Self.openClawThread
-            )
-        }
-        // Context critical (85%) — about to compact at 90%
-        else if maxPercent >= 85, (lastOpenClawMaxPercent ?? 0) < 85 {
-            let session = sessions.first { $0.percentUsed >= 85 }
-            notify(
-                id: "openclaw-context-critical",
-                title: "Context at \(Int(maxPercent))% — compaction imminent",
-                body: session.map { "\($0.sessionName): \($0.formattedTokens)" } ?? "",
-                thread: Self.openClawThread,
-                sound: true
-            )
-        }
-        // Context high (75%) — compaction coming
-        else if maxPercent >= 75, (lastOpenClawMaxPercent ?? 0) < 75 {
-            let session = sessions.first { $0.percentUsed >= 75 }
-            notify(
-                id: "openclaw-context-high",
-                title: "Context at \(Int(maxPercent))% — compaction at 90%",
-                body: session.map { "\($0.sessionName): \($0.formattedTokens)" } ?? "",
-                thread: Self.openClawThread
-            )
+            lastSessionPercents[name] = percent
         }
 
-        lastOpenClawMaxPercent = maxPercent
+        // Clean up sessions that disappeared
+        let activeNames = Set(sessions.map(\.sessionName))
+        lastSessionPercents = lastSessionPercents.filter { activeNames.contains($0.key) }
     }
 
     // MARK: - Send Notification
