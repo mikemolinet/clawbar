@@ -1,108 +1,160 @@
-# ClawBar
+<p align="center">
+  <h1 align="center">🦞 ClawBar</h1>
+  <p align="center">
+    Menu bar companion for <a href="https://github.com/openclaw/openclaw">OpenClaw</a> and <a href="https://claude.ai">Claude</a>
+    <br />
+    Monitor context windows, usage limits, and token consumption — all from your menu bar.
+  </p>
+</p>
 
-A macOS menu bar app for monitoring [OpenClaw](https://github.com/openclaw/openclaw) context usage and [Claude](https://claude.ai) rate limits at a glance.
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14%2B-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/Swift-6-orange?style=flat-square" />
+  <img src="https://img.shields.io/badge/dependencies-0-green?style=flat-square" />
+</p>
 
-![macOS 14+](https://img.shields.io/badge/macOS-14%2B-blue)
-![Swift 6](https://img.shields.io/badge/Swift-6-orange)
-![Zero Dependencies](https://img.shields.io/badge/dependencies-0-green)
+---
 
 ## What It Does
 
-**Dual progress bar in your menu bar** — top bar shows OpenClaw context window usage, bottom bar shows Claude session utilization.
+ClawBar lives in your menu bar with a **dual progress bar icon** — the top bar shows your OpenClaw context usage, the bottom shows your Claude session utilization. Click it to see the full picture.
 
-### OpenClaw Context Monitoring
-- Real-time context window usage for all active agent sessions
-- Per-session breakdown with token counts
-- 90% compaction threshold marker on progress bars
-- Compaction detection notifications (before and after)
+### 🦞 OpenClaw Context
+- **Real-time context window usage** for every active agent session
+- Per-session token counts and compaction history
+- **90% compaction threshold marker** on progress bars so you know when compaction will trigger
+- Supports multiple concurrent sessions (main, engineering, scheduling, etc.)
 
-### Claude Usage Tracking
-- Session (5h) and weekly (7d) utilization with progress bars
+### 🔶 Claude Usage
+- **Session (5h)** and **weekly (7d)** utilization with progress bars
 - Reset countdown timers
-- Overage tracking (if enabled)
+- Overage tracking if you have it enabled
 
-### Notifications
-- **75%** context: "Compaction at 90%" warning
-- **85%** context: "Compaction imminent" (with sound)
-- **Post-compaction**: Detects the drop, shows before/after percentages
-- **90%** Claude session: Approaching limit
-- **100%** Claude session: Depleted (with sound) + restored alert
-- **80%** Claude weekly: Approaching limit
-- All notifications are per-session with 15-minute cooldowns
-- Sounds can be toggled in Settings
+### 🔔 Smart Notifications
+All notifications are **per-session** — if engineering hits 75%, you'll still get notified when main hits 75% too.
 
-### Token Usage
-- Today and last 30 days input/output token breakdown
+| Event | Alert | Sound |
+|-------|-------|-------|
+| Context at 75% | "Compaction at 90%" | — |
+| Context at 85% | "Compaction imminent" | 🔊 |
+| Context compacted | Shows before → after % | — |
+| Claude session at 90% | "Approaching limit" | — |
+| Claude session depleted | "Limit reached" + reset time | 🔊 |
+| Claude session restored | "Available again" | 🔊 |
+| Claude weekly at 80% | "Approaching weekly limit" | — |
 
-## Requirements
+15-minute cooldown per alert type per session. Sounds can be toggled off in Settings.
 
-- **macOS 14 (Sonoma)** or later
-- One or both of:
-  - **[OpenClaw](https://github.com/openclaw/openclaw)** running locally (for context monitoring)
-  - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** installed (for Claude usage tracking)
+### 📊 Token Usage
+- Today and last 30 days with input/output breakdown
 
-ClawBar works with either or both — sections gracefully show status messages when a service isn't available.
+---
 
 ## Install
 
-### From DMG
-1. Download `ClawBar.dmg` from [Releases](../../releases)
-2. Open the DMG and drag ClawBar to Applications
-3. Launch ClawBar — it appears in your menu bar
-4. Since it's not code-signed, you may need to right-click → Open the first time (or allow it in System Settings → Privacy & Security)
+### Option 1: Download (Recommended)
 
-### From Source
+1. Download **ClawBar.dmg** from the [latest release](../../releases/latest)
+2. Open the DMG and drag **ClawBar** to your **Applications** folder
+3. Launch ClawBar
+
+> **First launch:** Since ClawBar isn't code-signed with an Apple Developer certificate, macOS will block it.
+> Go to **System Settings → Privacy & Security**, scroll down, and click **"Open Anyway"** next to the ClawBar message.
+> You only need to do this once.
+
+### Option 2: Build from Source
+
 ```bash
-# Requires Xcode 16+ and XcodeGen
+# Install XcodeGen (one-time)
 brew install xcodegen
+
+# Clone and build
 git clone https://github.com/mikemolinet/clawbar.git
 cd clawbar
 xcodegen generate
 xcodebuild -scheme ClawBar -configuration Release build SYMROOT=build
+
+# Run it
 open build/Release/ClawBar.app
 ```
 
-## How It Works
+Requires **Xcode 16+** and **macOS 14 (Sonoma)** or later.
 
-### OpenClaw Connection
-- Connects to local OpenClaw gateway via WebSocket
-- Ed25519 device authentication (keypair stored in Keychain)
-- First launch: ClawBar appears as a pending device in OpenClaw — approve it to connect
-- Polls `sessions.list` every 5s for real-time context data
-- Auto-reconnects on disconnect, watches config file for changes
+---
 
-### Claude Usage
-- Reads OAuth token from the `Claude Code-credentials` Keychain entry (created by Claude Code)
-- Polls `api.anthropic.com/api/oauth/usage` every 60s
-- No API key needed — uses your existing Claude Code authentication
+## Setup
+
+ClawBar works with **OpenClaw**, **Claude Code**, or both. Each section shows a helpful status message when a service isn't available.
+
+### OpenClaw (Context Monitoring)
+
+**Requirement:** [OpenClaw](https://github.com/openclaw/openclaw) running locally.
+
+1. Launch ClawBar — it automatically finds your OpenClaw gateway
+2. On first connect, **ClawBar** will appear as a pending device in OpenClaw
+3. Approve it: run `openclaw` and approve the "ClawBar" device, or approve it in the web dashboard
+4. That's it — context data starts flowing immediately
+
+ClawBar reads your gateway config from `~/.openclaw/openclaw.json` and auto-reconnects if the gateway restarts.
+
+### Claude Code (Usage Tracking)
+
+**Requirement:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated.
+
+No setup needed — ClawBar reads the OAuth token from your Keychain automatically (the `Claude Code-credentials` entry created when you authenticate Claude Code). If you haven't authenticated yet, just run `claude` in your terminal and sign in.
+
+---
 
 ## Settings
 
-Open via the menu bar dropdown → **Settings...** (⌘,)
+Open from the dropdown menu → **Settings...** (or ⌘,)
 
-- **Launch at login** — start ClawBar automatically
-- **Progress bar display** — show "% used" or "% remaining"
-- **Notification sounds** — toggle alert sounds on/off
-- **Connections tab** — see status of OpenClaw and Claude connections
+| Setting | What it does |
+|---------|-------------|
+| **Launch at login** | Start ClawBar automatically when you log in |
+| **Progress bars show** | Toggle between "% used" and "% remaining" |
+| **Notification sounds** | Turn alert sounds on or off |
+
+The **Connections** tab shows live status for both OpenClaw and Claude.
+
+---
 
 ## Architecture
 
-Pure Swift, zero external dependencies. Apple frameworks only.
+Zero external dependencies. Pure Swift using only Apple frameworks.
 
 ```
-ClawBar/
-├── ClawBar/                    # Xcode app wrapper (entitlements, Info.plist)
-├── Packages/ClawBarCore/       # SPM package with all logic
-│   └── Sources/
-│       ├── App/                # App entry point
-│       ├── MenuBar/            # NSStatusItem, icon rendering
-│       ├── Models/             # Data types
-│       ├── Notifications/      # UNUserNotification management
-│       ├── Services/           # WS connection, REST poller, Keychain, config
-│       ├── State/              # @Observable AppState + AppCoordinator
-│       └── Views/              # SwiftUI views (cards, settings, all-sessions)
-└── project.yml                 # XcodeGen spec
+Packages/ClawBarCore/Sources/
+├── App/                # SwiftUI app entry point
+├── MenuBar/            # NSStatusItem + dual-bar icon renderer
+├── Models/             # Data types (context, usage, connection status)
+├── Notifications/      # macOS notification management with cooldowns
+├── Services/           # WebSocket connection, REST poller, Keychain reader
+├── State/              # @Observable AppState + AppCoordinator
+└── Views/              # SwiftUI cards, settings window, all-sessions panel
 ```
+
+- **OpenClaw connection:** WebSocket to local gateway with Ed25519 device authentication via CryptoKit
+- **Claude polling:** REST calls to `api.anthropic.com` using your existing OAuth token
+- **State management:** Single `AppState` (@Observable) flows to all views via `AppCoordinator`
+
+---
+
+## FAQ
+
+**Q: Do I need both OpenClaw and Claude Code?**
+No. ClawBar works with either one or both. Sections gracefully show status messages when a service isn't available.
+
+**Q: What's the 90% mark on the progress bar?**
+OpenClaw compacts (summarizes) your conversation context when it reaches ~90% capacity. The marker shows you where that threshold is so the drop from 90% → ~10% isn't surprising.
+
+**Q: Will ClawBar work with Claude.ai (browser)?**
+It tracks usage for your Claude account overall, so yes — the session and weekly limits shown apply to both Claude Code and claude.ai usage.
+
+**Q: How do I reset the device pairing?**
+Delete the `com.vector.clawbar.device-identity` entry from Keychain Access and relaunch ClawBar.
+
+---
 
 ## License
 
