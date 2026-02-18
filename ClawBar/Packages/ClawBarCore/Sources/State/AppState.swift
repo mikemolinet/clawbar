@@ -14,6 +14,10 @@ public final class AppState {
 
     // Settings
     public var showUsed: Bool = true // true = "X% used", false = "X% remaining"
+    public var soundsEnabled: Bool {
+        get { UserDefaults.standard.object(forKey: "soundsEnabled") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "soundsEnabled") }
+    }
 
     public init() {}
 

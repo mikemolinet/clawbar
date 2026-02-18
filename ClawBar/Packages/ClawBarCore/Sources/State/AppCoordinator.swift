@@ -19,9 +19,14 @@ public final class AppCoordinator {
     }
 
     public func start() {
+        syncNotificationSettings()
         startClaudePolling()
         startOpenClawConnection()
         watchConfigFile()
+    }
+
+    private func syncNotificationSettings() {
+        notificationManager.soundsEnabled = state.soundsEnabled
     }
 
     public func stop() {
@@ -48,6 +53,7 @@ public final class AppCoordinator {
     }
 
     private func pollClaude() async {
+        syncNotificationSettings()
         do {
             let usage = try await claudePoller.fetchUsage()
             state.claudeUsage = usage

@@ -44,6 +44,10 @@ public struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
             }
+
+            Section("Notifications") {
+                Toggle("Notification sounds", isOn: $state.soundsEnabled)
+            }
         }
         .formStyle(.grouped)
         .padding()
