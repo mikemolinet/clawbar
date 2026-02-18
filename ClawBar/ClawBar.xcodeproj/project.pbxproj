@@ -25,7 +25,9 @@
 		6A55E2EDEE4E02F73A594D6F /* CostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEC6BC322D996B2CE9A268 /* CostData.swift */; };
 		844BF85E91B2EFDB40ECC4B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4104911619B94A92250AECC8 /* AppState.swift */; };
 		B26F4075CC020484923DEEED /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */; };
+		B5D50F450D1B296A028B6621 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6954956F4C8C1695413C9AB7 /* SettingsView.swift */; };
 		BCDAF0A94A5E311226CF410C /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1008BBA3A92A8C9B5D9ED /* DeviceIdentity.swift */; };
+		BD134B3CDEA9F910374386B5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B18A27F88C2A08C3D25C41 /* NotificationManager.swift */; };
 		C33812D30514B41E202134D1 /* OpenClawCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */; };
 		C721B17E62AC14792370F3F6 /* ClawBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111765072C856B6C68A79807 /* ClawBarApp.swift */; };
 		E72388434EECC6191460B3E5 /* CostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6824BE81CCB5ACB99ADCD55D /* CostCard.swift */; };
@@ -46,9 +48,11 @@
 		5E33243958DE06E929489AC7 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUsageData.swift; sourceTree = "<group>"; };
 		6824BE81CCB5ACB99ADCD55D /* CostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCard.swift; sourceTree = "<group>"; };
+		6954956F4C8C1695413C9AB7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BD734E91D0B8296533DA2EB /* KeychainReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReader.swift; sourceTree = "<group>"; };
 		75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsage.swift; sourceTree = "<group>"; };
+		80B18A27F88C2A08C3D25C41 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8912266BD835A8256DC46BFF /* ConfigReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigReader.swift; sourceTree = "<group>"; };
 		A3717B1F884C55796092016B /* OpenClawContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawContext.swift; sourceTree = "<group>"; };
 		A3BE8AFC02C260D8CA319743 /* IconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRenderer.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				4D6F9AC098A737F8C61B497F /* App */,
 				E9974670715591ABB7CD3FB8 /* MenuBar */,
 				1CAA10EFC5665DE10A31B503 /* Models */,
+				818DFB36F7B9AB40DDF5D8B7 /* Notifications */,
 				D6699ABF49E774177FB004D3 /* Services */,
 				03129E03559D73252AA02CCA /* State */,
 				CD3FCF63C1FA26FB4E3CB979 /* Utilities */,
@@ -124,6 +129,7 @@
 				6824BE81CCB5ACB99ADCD55D /* CostCard.swift */,
 				D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */,
 				1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */,
+				6954956F4C8C1695413C9AB7 /* SettingsView.swift */,
 				EA46790F82182563279DC40F /* TokenUsageCard.swift */,
 			);
 			path = Views;
@@ -135,6 +141,14 @@
 				111765072C856B6C68A79807 /* ClawBarApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		818DFB36F7B9AB40DDF5D8B7 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				80B18A27F88C2A08C3D25C41 /* NotificationManager.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		C0F01538B1A7667F1203A7CB = {
@@ -255,9 +269,11 @@
 				52EA1446BFAD67FE6F2283B1 /* IconRenderer.swift in Sources */,
 				220D29A3F3C70AD01C4E6081 /* KeychainReader.swift in Sources */,
 				B26F4075CC020484923DEEED /* MenuCardView.swift in Sources */,
+				BD134B3CDEA9F910374386B5 /* NotificationManager.swift in Sources */,
 				C33812D30514B41E202134D1 /* OpenClawCard.swift in Sources */,
 				EFA10812A5B7A53B560FD089 /* OpenClawConnection.swift in Sources */,
 				4544956D5260E027EB6754A3 /* OpenClawContext.swift in Sources */,
+				B5D50F450D1B296A028B6621 /* SettingsView.swift in Sources */,
 				46276D9F104595384449B52F /* StatusItemController.swift in Sources */,
 				458751A736594B1F63473454 /* TimeFormatting.swift in Sources */,
 				26452AB087F17B77BF95CCFB /* TokenUsageCard.swift in Sources */,

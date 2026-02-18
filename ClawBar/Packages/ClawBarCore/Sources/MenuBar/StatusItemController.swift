@@ -7,6 +7,7 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
     private let state: AppState
     private var lastBucket: IconBucket?
     private var allSessionsWindow: AllSessionsWindowController?
+    private var settingsWindow: NSWindow?
 
     public init(state: AppState) {
         self.state = state
@@ -85,7 +86,27 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
     }
 
     @objc private func openSettings() {
+        if let existing = settingsWindow, existing.isVisible {
+            existing.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
+
+        let settingsView = SettingsView(state: state)
+        let hostingView = NSHostingView(rootView: settingsView)
+        let window = NSWindow(
+            contentRect: NSRect(origin: .zero, size: NSSize(width: 360, height: 260)),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "ClawBar Settings"
+        window.contentView = hostingView
+        window.center()
+        window.isReleasedWhenClosed = false
+        window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        settingsWindow = window
     }
 
     // MARK: - NSMenuDelegate
