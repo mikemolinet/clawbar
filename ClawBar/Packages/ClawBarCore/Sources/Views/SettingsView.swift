@@ -17,7 +17,7 @@ public struct SettingsView: View {
             connectionsTab
                 .tabItem { Label("Connections", systemImage: "network") }
         }
-        .frame(width: 360, height: 260)
+        .frame(width: 360, height: 320)
     }
 
     private var generalTab: some View {
