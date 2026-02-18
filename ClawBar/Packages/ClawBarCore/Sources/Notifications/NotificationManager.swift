@@ -77,9 +77,24 @@ public final class NotificationManager {
     public func checkOpenClawSessions(_ sessions: [OpenClawContext]) {
         guard let maxPercent = sessions.map(\.percentUsed).max() else { return }
 
-        // Context critical (95%)
-        if maxPercent >= 95, (lastOpenClawMaxPercent ?? 0) < 95 {
-            let session = sessions.first { $0.percentUsed >= 95 }
+        // Compaction detected — large sudden drop (e.g. 80%+ → under 30%)
+        if let lastMax = lastOpenClawMaxPercent, lastMax >= 70, maxPercent < 30 {
+            // Find which session(s) compacted (compactionCount increased or percent dropped)
+            let compactedNames = sessions
+                .filter { $0.percentUsed < 30 }
+                .map { $0.sessionName }
+                .joined(separator: ", ")
+
+            notify(
+                id: "openclaw-context-compacted",
+                title: "Context compacted",
+                body: compactedNames.isEmpty ? "Context compressed to \(Int(maxPercent))%" : "\(compactedNames) — now at \(Int(maxPercent))%",
+                thread: Self.openClawThread
+            )
+        }
+        // Context critical (85%) — about to compact at 90%
+        else if maxPercent >= 85, (lastOpenClawMaxPercent ?? 0) < 85 {
+            let session = sessions.first { $0.percentUsed >= 85 }
             notify(
                 id: "openclaw-context-critical",
                 title: "Context at \(Int(maxPercent))% — compaction imminent",
@@ -88,12 +103,12 @@ public final class NotificationManager {
                 sound: true
             )
         }
-        // Context high (80%)
-        else if maxPercent >= 80, (lastOpenClawMaxPercent ?? 0) < 80 {
-            let session = sessions.first { $0.percentUsed >= 80 }
+        // Context high (75%) — compaction coming
+        else if maxPercent >= 75, (lastOpenClawMaxPercent ?? 0) < 75 {
+            let session = sessions.first { $0.percentUsed >= 75 }
             notify(
                 id: "openclaw-context-high",
-                title: "Context at \(Int(maxPercent))% — compaction soon",
+                title: "Context at \(Int(maxPercent))% — compaction at 90%",
                 body: session.map { "\($0.sessionName): \($0.formattedTokens)" } ?? "",
                 thread: Self.openClawThread
             )
