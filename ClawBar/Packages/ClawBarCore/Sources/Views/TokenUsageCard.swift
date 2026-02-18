@@ -30,7 +30,7 @@ public struct TokenUsageCard: View {
                                 .font(.subheadline.monospacedDigit())
                                 .fontWeight(.medium)
                             HStack(spacing: 6) {
-                                Label(TokenFormatting.format(today.input), systemImage: "arrow.down.circle")
+                                Label(TokenFormatting.format(today.combinedInput), systemImage: "arrow.down.circle")
                                     .font(.caption2.monospacedDigit())
                                     .foregroundStyle(.tertiary)
                                 Label(TokenFormatting.format(today.output), systemImage: "arrow.up.circle")

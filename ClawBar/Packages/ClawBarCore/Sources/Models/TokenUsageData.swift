@@ -15,7 +15,7 @@ public struct TokenUsageData: Sendable, Equatable {
     }
 
     public var totalInput: Int {
-        daily.reduce(0) { $0 + $1.input }
+        daily.reduce(0) { $0 + $1.combinedInput }
     }
 
     public var totalOutput: Int {
@@ -49,6 +49,11 @@ public struct DailyTokenUsage: Sendable, Equatable {
         self.cacheRead = cacheRead
         self.cacheWrite = cacheWrite
         self.totalTokens = totalTokens
+    }
+
+    /// Input + cache read + cache write (all tokens sent to the model)
+    public var combinedInput: Int {
+        input + cacheRead + cacheWrite
     }
 }
 
