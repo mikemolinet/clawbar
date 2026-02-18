@@ -4,6 +4,7 @@ import Foundation
 public final class AppCoordinator {
     public let state: AppState
     private let claudePoller: ClaudeUsageProviding
+    private let notificationManager = NotificationManager()
     private var pollTask: Task<Void, Never>?
     private var openClawConnection: OpenClawConnection?
     private var configWatcherSource: DispatchSourceFileSystemObject?
@@ -52,6 +53,7 @@ public final class AppCoordinator {
             state.claudeUsage = usage
             state.claudeStatus = .available
             state.lastClaudeUpdate = .now
+            notificationManager.checkClaudeUsage(usage)
         } catch let error as ClawBarError {
             switch error {
             case .claudeCredentialsNotFound:
@@ -98,6 +100,7 @@ public final class AppCoordinator {
             state.openClawSessions = sessions
             state.openClawStatus = .connected
             state.lastOpenClawUpdate = .now
+            notificationManager.checkOpenClawSessions(sessions)
         case .tokenUsageUpdate(let tokenUsage):
             state.tokenUsage = tokenUsage
         case .compactionStarted:
