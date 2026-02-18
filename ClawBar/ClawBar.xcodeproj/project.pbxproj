@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		029EAE0BB154CCC4006C5363 /* TokenUsageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */; };
+		0575E559B88849E52139CDD2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA89FBD233E1B7EB451DC8C /* AppCoordinator.swift */; };
+		1180B34FAD2E4986212C825C /* ContextProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */; };
+		193FA7806F9B41986A707589 /* ClaudeUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */; };
+		220D29A3F3C70AD01C4E6081 /* KeychainReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD734E91D0B8296533DA2EB /* KeychainReader.swift */; };
+		26452AB087F17B77BF95CCFB /* TokenUsageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46790F82182563279DC40F /* TokenUsageCard.swift */; };
+		4544956D5260E027EB6754A3 /* OpenClawContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3717B1F884C55796092016B /* OpenClawContext.swift */; };
+		458751A736594B1F63473454 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5219C940FDC9DBA057CF05E /* TimeFormatting.swift */; };
+		46276D9F104595384449B52F /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3982C6C42901A94A65ABD /* StatusItemController.swift */; };
+		4F1BC00B67977AD3054C75C3 /* ClaudeUsageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79115D870B8B12F917C3D1B /* ClaudeUsageCard.swift */; };
+		5191B8B3251F25A9155C840F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E33243958DE06E929489AC7 /* Errors.swift */; };
+		52EA1446BFAD67FE6F2283B1 /* IconRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE8AFC02C260D8CA319743 /* IconRenderer.swift */; };
+		596E00665D74BAA40E437BCD /* ClaudeUsagePoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D57CF9F0D0372353C5ED9D /* ClaudeUsagePoller.swift */; };
+		5B9A2D02E267FAD98415944E /* AllSessionsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5120D9329E821F30B1BDAC /* AllSessionsWindow.swift */; };
+		5E6DBAB79810E3C2F79094A3 /* ConfigReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912266BD835A8256DC46BFF /* ConfigReader.swift */; };
+		6A55E2EDEE4E02F73A594D6F /* CostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEC6BC322D996B2CE9A268 /* CostData.swift */; };
+		844BF85E91B2EFDB40ECC4B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4104911619B94A92250AECC8 /* AppState.swift */; };
+		B26F4075CC020484923DEEED /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */; };
+		BCDAF0A94A5E311226CF410C /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1008BBA3A92A8C9B5D9ED /* DeviceIdentity.swift */; };
+		C33812D30514B41E202134D1 /* OpenClawCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */; };
+		C721B17E62AC14792370F3F6 /* ClawBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111765072C856B6C68A79807 /* ClawBarApp.swift */; };
+		E72388434EECC6191460B3E5 /* CostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6824BE81CCB5ACB99ADCD55D /* CostCard.swift */; };
+		E756BC430ACF603CD308E09B /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */; };
+		EFA10812A5B7A53B560FD089 /* OpenClawConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E26AF1845071F2BBD85DCF6 /* OpenClawConnection.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E26AF1845071F2BBD85DCF6 /* OpenClawConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawConnection.swift; sourceTree = "<group>"; };
+		111765072C856B6C68A79807 /* ClawBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClawBarApp.swift; sourceTree = "<group>"; };
+		17DEC6BC322D996B2CE9A268 /* CostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostData.swift; sourceTree = "<group>"; };
+		1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawCard.swift; sourceTree = "<group>"; };
+		1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProgressBar.swift; sourceTree = "<group>"; };
+		2C915C0A7BAD33286067F63E /* ClawBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClawBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F5120D9329E821F30B1BDAC /* AllSessionsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionsWindow.swift; sourceTree = "<group>"; };
+		4104911619B94A92250AECC8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		53D57CF9F0D0372353C5ED9D /* ClaudeUsagePoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsagePoller.swift; sourceTree = "<group>"; };
+		5E33243958DE06E929489AC7 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUsageData.swift; sourceTree = "<group>"; };
+		6824BE81CCB5ACB99ADCD55D /* CostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCard.swift; sourceTree = "<group>"; };
+		6BD734E91D0B8296533DA2EB /* KeychainReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReader.swift; sourceTree = "<group>"; };
+		75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
+		80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsage.swift; sourceTree = "<group>"; };
+		8912266BD835A8256DC46BFF /* ConfigReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigReader.swift; sourceTree = "<group>"; };
+		A3717B1F884C55796092016B /* OpenClawContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenClawContext.swift; sourceTree = "<group>"; };
+		A3BE8AFC02C260D8CA319743 /* IconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRenderer.swift; sourceTree = "<group>"; };
+		AC7538376EAEE5794C414077 /* ClawBarCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ClawBarCore; path = Packages/ClawBarCore; sourceTree = SOURCE_ROOT; };
+		D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
+		E2F1008BBA3A92A8C9B5D9ED /* DeviceIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentity.swift; sourceTree = "<group>"; };
+		E79115D870B8B12F917C3D1B /* ClaudeUsageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsageCard.swift; sourceTree = "<group>"; };
+		EA46790F82182563279DC40F /* TokenUsageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUsageCard.swift; sourceTree = "<group>"; };
+		EDA89FBD233E1B7EB451DC8C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F5219C940FDC9DBA057CF05E /* TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatting.swift; sourceTree = "<group>"; };
+		FCD3982C6C42901A94A65ABD /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03129E03559D73252AA02CCA /* State */ = {
+			isa = PBXGroup;
+			children = (
+				EDA89FBD233E1B7EB451DC8C /* AppCoordinator.swift */,
+				4104911619B94A92250AECC8 /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		16D5A2627C5287064E672D55 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				AC7538376EAEE5794C414077 /* ClawBarCore */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		1CAA10EFC5665DE10A31B503 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80599B9FACAD2C4027FD25DD /* ClaudeUsage.swift */,
+				75266A225D8FE6D0193C43FF /* ConnectionStatus.swift */,
+				17DEC6BC322D996B2CE9A268 /* CostData.swift */,
+				A3717B1F884C55796092016B /* OpenClawContext.swift */,
+				5FF1EF1F2E7E32BC47677988 /* TokenUsageData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1CF8FE142EC9C60AB0A472F0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F9AC098A737F8C61B497F /* App */,
+				E9974670715591ABB7CD3FB8 /* MenuBar */,
+				1CAA10EFC5665DE10A31B503 /* Models */,
+				D6699ABF49E774177FB004D3 /* Services */,
+				03129E03559D73252AA02CCA /* State */,
+				CD3FCF63C1FA26FB4E3CB979 /* Utilities */,
+				4B649C005F371DAC5BE3FE9A /* Views */,
+			);
+			name = Sources;
+			path = Packages/ClawBarCore/Sources;
+			sourceTree = "<group>";
+		};
+		4B57875E4A2F112E3A0A6203 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C915C0A7BAD33286067F63E /* ClawBar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B649C005F371DAC5BE3FE9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F5120D9329E821F30B1BDAC /* AllSessionsWindow.swift */,
+				E79115D870B8B12F917C3D1B /* ClaudeUsageCard.swift */,
+				1C8F14489931B7FE41B07320 /* ContextProgressBar.swift */,
+				6824BE81CCB5ACB99ADCD55D /* CostCard.swift */,
+				D9CDA3E589F1CC528251B3C2 /* MenuCardView.swift */,
+				1B989EC3011C0C76FD2AFBA4 /* OpenClawCard.swift */,
+				EA46790F82182563279DC40F /* TokenUsageCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4D6F9AC098A737F8C61B497F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				111765072C856B6C68A79807 /* ClawBarApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C0F01538B1A7667F1203A7CB = {
+			isa = PBXGroup;
+			children = (
+				16D5A2627C5287064E672D55 /* Packages */,
+				1CF8FE142EC9C60AB0A472F0 /* Sources */,
+				4B57875E4A2F112E3A0A6203 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD3FCF63C1FA26FB4E3CB979 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E2F1008BBA3A92A8C9B5D9ED /* DeviceIdentity.swift */,
+				5E33243958DE06E929489AC7 /* Errors.swift */,
+				F5219C940FDC9DBA057CF05E /* TimeFormatting.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D6699ABF49E774177FB004D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				53D57CF9F0D0372353C5ED9D /* ClaudeUsagePoller.swift */,
+				8912266BD835A8256DC46BFF /* ConfigReader.swift */,
+				6BD734E91D0B8296533DA2EB /* KeychainReader.swift */,
+				0E26AF1845071F2BBD85DCF6 /* OpenClawConnection.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E9974670715591ABB7CD3FB8 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				A3BE8AFC02C260D8CA319743 /* IconRenderer.swift */,
+				FCD3982C6C42901A94A65ABD /* StatusItemController.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3306DE52381DC20741D65B95 /* ClawBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C116DF85D42E9A75DE553A5 /* Build configuration list for PBXNativeTarget "ClawBar" */;
+			buildPhases = (
+				9631A078FD0BAD41EBEB4674 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClawBar;
+			packageProductDependencies = (
+			);
+			productName = ClawBar;
+			productReference = 2C915C0A7BAD33286067F63E /* ClawBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C448EFB181F53A798E3F162 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					3306DE52381DC20741D65B95 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A989449E8EE9EBF05667338B /* Build configuration list for PBXProject "ClawBar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C0F01538B1A7667F1203A7CB;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B220FE124681B9DC4CF7E7E6 /* XCLocalSwiftPackageReference "Packages/ClawBarCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3306DE52381DC20741D65B95 /* ClawBar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9631A078FD0BAD41EBEB4674 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B9A2D02E267FAD98415944E /* AllSessionsWindow.swift in Sources */,
+				0575E559B88849E52139CDD2 /* AppCoordinator.swift in Sources */,
+				844BF85E91B2EFDB40ECC4B6 /* AppState.swift in Sources */,
+				193FA7806F9B41986A707589 /* ClaudeUsage.swift in Sources */,
+				4F1BC00B67977AD3054C75C3 /* ClaudeUsageCard.swift in Sources */,
+				596E00665D74BAA40E437BCD /* ClaudeUsagePoller.swift in Sources */,
+				C721B17E62AC14792370F3F6 /* ClawBarApp.swift in Sources */,
+				5E6DBAB79810E3C2F79094A3 /* ConfigReader.swift in Sources */,
+				E756BC430ACF603CD308E09B /* ConnectionStatus.swift in Sources */,
+				1180B34FAD2E4986212C825C /* ContextProgressBar.swift in Sources */,
+				E72388434EECC6191460B3E5 /* CostCard.swift in Sources */,
+				6A55E2EDEE4E02F73A594D6F /* CostData.swift in Sources */,
+				BCDAF0A94A5E311226CF410C /* DeviceIdentity.swift in Sources */,
+				5191B8B3251F25A9155C840F /* Errors.swift in Sources */,
+				52EA1446BFAD67FE6F2283B1 /* IconRenderer.swift in Sources */,
+				220D29A3F3C70AD01C4E6081 /* KeychainReader.swift in Sources */,
+				B26F4075CC020484923DEEED /* MenuCardView.swift in Sources */,
+				C33812D30514B41E202134D1 /* OpenClawCard.swift in Sources */,
+				EFA10812A5B7A53B560FD089 /* OpenClawConnection.swift in Sources */,
+				4544956D5260E027EB6754A3 /* OpenClawContext.swift in Sources */,
+				46276D9F104595384449B52F /* StatusItemController.swift in Sources */,
+				458751A736594B1F63473454 /* TimeFormatting.swift in Sources */,
+				26452AB087F17B77BF95CCFB /* TokenUsageCard.swift in Sources */,
+				029EAE0BB154CCC4006C5363 /* TokenUsageData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		27391EDE1F7FDA57C0036A92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClawBar/ClawBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ClawBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vector.clawbar;
+				PRODUCT_NAME = ClawBar;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		34E90DFC0BDE99780069D8AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		53546499B9FEAF025EB6D9E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B2D8A5BDC1D3C752B663C782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClawBar/ClawBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ClawBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vector.clawbar;
+				PRODUCT_NAME = ClawBar;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6C116DF85D42E9A75DE553A5 /* Build configuration list for PBXNativeTarget "ClawBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D8A5BDC1D3C752B663C782 /* Debug */,
+				27391EDE1F7FDA57C0036A92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A989449E8EE9EBF05667338B /* Build configuration list for PBXProject "ClawBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53546499B9FEAF025EB6D9E8 /* Debug */,
+				34E90DFC0BDE99780069D8AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		B220FE124681B9DC4CF7E7E6 /* XCLocalSwiftPackageReference "Packages/ClawBarCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ClawBarCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+	};
+	rootObject = 5C448EFB181F53A798E3F162 /* Project object */;
+}
