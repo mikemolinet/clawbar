@@ -5,17 +5,20 @@ public struct ClaudeUsageCard: View {
     let status: ClaudeConnectionStatus
     let showUsed: Bool
     let lastUpdate: Date?
+    var onRetry: (() -> Void)?
 
     public init(
         usage: ClaudeUsage?,
         status: ClaudeConnectionStatus,
         showUsed: Bool = true,
-        lastUpdate: Date? = nil
+        lastUpdate: Date? = nil,
+        onRetry: (() -> Void)? = nil
     ) {
         self.usage = usage
         self.status = status
         self.showUsed = showUsed
         self.lastUpdate = lastUpdate
+        self.onRetry = onRetry
     }
 
     private static let claudeColor = Color(red: 0.85, green: 0.45, blue: 0.35) // Anthropic coral
@@ -41,9 +44,18 @@ public struct ClaudeUsageCard: View {
             }
 
             if status != .available {
-                Text(status.displayText)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                HStack {
+                    Text(status.displayText)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    if let onRetry {
+                        Button("Retry") { onRetry() }
+                            .buttonStyle(.plain)
+                            .font(.subheadline)
+                            .foregroundStyle(.blue)
+                    }
+                }
             } else if let usage {
                 usageContent(usage)
             }

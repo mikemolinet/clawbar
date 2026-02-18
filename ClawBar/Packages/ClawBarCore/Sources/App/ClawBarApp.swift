@@ -19,8 +19,10 @@ public final class AppDelegate: NSObject, NSApplicationDelegate {
     private let state = AppState()
 
     public func applicationDidFinishLaunching(_ notification: Notification) {
-        statusItemController = StatusItemController(state: state)
         coordinator = AppCoordinator(state: state)
+        statusItemController = StatusItemController(state: state, onRetryClaude: { [weak self] in
+            self?.coordinator?.retryClaude()
+        })
         coordinator?.start()
 
         // Listen for sleep/wake

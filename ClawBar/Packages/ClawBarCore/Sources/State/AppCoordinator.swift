@@ -152,4 +152,12 @@ public final class AppCoordinator {
         }
         // OpenClaw reconnects automatically via WS
     }
+
+    /// Retry Claude connection (e.g., after installing Claude Code)
+    public func retryClaude() {
+        state.claudeStatus = .unknown
+        Task {
+            await pollClaude()
+        }
+    }
 }

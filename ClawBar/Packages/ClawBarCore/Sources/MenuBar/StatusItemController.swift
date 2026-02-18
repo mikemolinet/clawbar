@@ -5,12 +5,14 @@ import SwiftUI
 public final class StatusItemController: NSObject, NSMenuDelegate {
     private let statusItem: NSStatusItem
     private let state: AppState
+    private var onRetryClaude: (() -> Void)?
     private var lastBucket: IconBucket?
     private var allSessionsWindow: AllSessionsWindowController?
     private var settingsWindow: NSWindow?
 
-    public init(state: AppState) {
+    public init(state: AppState, onRetryClaude: (() -> Void)? = nil) {
         self.state = state
+        self.onRetryClaude = onRetryClaude
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         super.init()
 
@@ -34,6 +36,8 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
         let hostingView = NSHostingView(rootView: MenuCardView(state: state, onShowAllSessions: { [weak self] in
             self?.statusItem.menu?.cancelTracking()
             self?.allSessionsWindow?.show()
+        }, onRetryClaude: { [weak self] in
+            self?.onRetryClaude?()
         }))
 
         let fittingSize = hostingView.fittingSize

@@ -3,10 +3,12 @@ import SwiftUI
 public struct MenuCardView: View {
     @Bindable var state: AppState
     var onShowAllSessions: (() -> Void)?
+    var onRetryClaude: (() -> Void)?
 
-    public init(state: AppState, onShowAllSessions: (() -> Void)? = nil) {
+    public init(state: AppState, onShowAllSessions: (() -> Void)? = nil, onRetryClaude: (() -> Void)? = nil) {
         self.state = state
         self.onShowAllSessions = onShowAllSessions
+        self.onRetryClaude = onRetryClaude
     }
 
     public var body: some View {
@@ -26,7 +28,8 @@ public struct MenuCardView: View {
                 usage: state.claudeUsage,
                 status: state.claudeStatus,
                 showUsed: state.showUsed,
-                lastUpdate: state.lastClaudeUpdate
+                lastUpdate: state.lastClaudeUpdate,
+                onRetry: onRetryClaude
             )
 
             if state.tokenUsage != nil || state.openClawStatus.isConnected {
