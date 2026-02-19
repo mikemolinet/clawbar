@@ -158,7 +158,7 @@ public actor OpenClawConnection {
                 // sessions.list response
                 handleSessionsResponse(sessions)
             } else if ok, let dailyArr = payload?["daily"] as? [[String: Any]] {
-                // usage.cost response — we use token counts only
+                // usage.cost response — token counts across all agents
                 handleTokenUsageResponse(dailyArr)
             }
         }
@@ -303,6 +303,8 @@ public actor OpenClawConnection {
             await onUpdate(.tokenUsageUpdate(TokenUsageData(daily: usage)))
         }
     }
+
+    // handleSessionsUsageResponse removed — usage.cost now aggregates all agents server-side
 
     private func extractSessionName(from key: String) -> String {
         let parts = key.split(separator: ":")
