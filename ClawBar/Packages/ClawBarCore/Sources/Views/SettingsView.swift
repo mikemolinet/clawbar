@@ -20,7 +20,7 @@ public struct SettingsView: View {
             connectionsTab
                 .tabItem { Label("Connections", systemImage: "network") }
         }
-        .frame(width: 360, height: 360)
+        .frame(width: 440, height: 380)
     }
 
     private var generalTab: some View {
@@ -56,8 +56,13 @@ public struct SettingsView: View {
     private var notificationsTab: some View {
         Form {
             Section("Context Window") {
-                Toggle("Context memory filling up", isOn: $state.notifyContextApproaching)
-                Text("Alerts when your AI's conversation memory is getting full")
+                Toggle("Context at 75%", isOn: $state.notifyContext75)
+                Text("Heads up that conversation memory is filling up")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+
+                Toggle("Context at 85%", isOn: $state.notifyContext85)
+                Text("Warning — session will summarize soon")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
 

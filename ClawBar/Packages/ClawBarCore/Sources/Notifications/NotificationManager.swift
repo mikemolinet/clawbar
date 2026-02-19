@@ -9,7 +9,8 @@ public final class NotificationManager {
     private var cooldowns: [String: Date] = [:]
     private let cooldownInterval: TimeInterval = 900 // 15 minutes
     public var soundsEnabled: Bool = true
-    public var contextApproachingEnabled: Bool = true
+    public var context75Enabled: Bool = true
+    public var context85Enabled: Bool = true
     public var contextCompactedEnabled: Bool = true
     public var claudeSessionEnabled: Bool = true
 
@@ -96,7 +97,7 @@ public final class NotificationManager {
                 )
             }
             // Context critical (85%) — about to summarize at 90%
-            else if contextApproachingEnabled, percent >= 85, lastPercent < 85 {
+            else if context85Enabled, percent >= 85, lastPercent < 85 {
                 notify(
                     id: "openclaw-critical-\(name)",
                     title: "\(name) — session will summarize soon",
@@ -106,7 +107,7 @@ public final class NotificationManager {
                 )
             }
             // Context high (75%)
-            else if contextApproachingEnabled, percent >= 75, lastPercent < 75 {
+            else if context75Enabled, percent >= 75, lastPercent < 75 {
                 notify(
                     id: "openclaw-high-\(name)",
                     title: "\(name) — context memory filling up",

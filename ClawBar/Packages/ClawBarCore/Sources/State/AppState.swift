@@ -23,9 +23,13 @@ public final class AppState {
     }
 
     // Notification toggles (all default ON)
-    public var notifyContextApproaching: Bool {
-        get { UserDefaults.standard.object(forKey: "notifyContextApproaching") as? Bool ?? true }
-        set { UserDefaults.standard.set(newValue, forKey: "notifyContextApproaching") }
+    public var notifyContext75: Bool {
+        get { UserDefaults.standard.object(forKey: "notifyContext75") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "notifyContext75") }
+    }
+    public var notifyContext85: Bool {
+        get { UserDefaults.standard.object(forKey: "notifyContext85") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "notifyContext85") }
     }
     public var notifyContextCompacted: Bool {
         get { UserDefaults.standard.object(forKey: "notifyContextCompacted") as? Bool ?? true }
