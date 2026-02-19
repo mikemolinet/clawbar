@@ -27,6 +27,9 @@ public final class AppCoordinator {
 
     private func syncNotificationSettings() {
         notificationManager.soundsEnabled = state.soundsEnabled
+        notificationManager.contextApproachingEnabled = state.notifyContextApproaching
+        notificationManager.contextCompactedEnabled = state.notifyContextCompacted
+        notificationManager.claudeSessionEnabled = state.notifyClaudeSession
     }
 
     public func stop() {

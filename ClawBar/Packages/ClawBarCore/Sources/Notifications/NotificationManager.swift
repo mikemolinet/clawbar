@@ -9,6 +9,9 @@ public final class NotificationManager {
     private var cooldowns: [String: Date] = [:]
     private let cooldownInterval: TimeInterval = 900 // 15 minutes
     public var soundsEnabled: Bool = true
+    public var contextApproachingEnabled: Bool = true
+    public var contextCompactedEnabled: Bool = true
+    public var claudeSessionEnabled: Bool = true
 
     // Notification thread IDs for grouping
     private static let claudeThread = "claude-usage"
@@ -28,47 +31,49 @@ public final class NotificationManager {
         let sessionPercent = usage.session?.percentUsed ?? 0
         let weeklyPercent = usage.weekly?.percentUsed ?? 0
 
-        // Session depleted
-        if sessionPercent >= 100, (lastClaudeSessionPercent ?? 0) < 100 {
-            let resetText = TimeFormatting.relativeReset(usage.session?.resetsAt) ?? "soon"
-            notify(
-                id: "claude-session-depleted",
-                title: "Claude session limit reached",
-                body: "\(resetText)",
-                thread: Self.claudeThread,
-                sound: true
-            )
-        }
+        if claudeSessionEnabled {
+            // Session depleted
+            if sessionPercent >= 100, (lastClaudeSessionPercent ?? 0) < 100 {
+                let resetText = TimeFormatting.relativeReset(usage.session?.resetsAt) ?? "soon"
+                notify(
+                    id: "claude-session-depleted",
+                    title: "Claude session limit reached",
+                    body: "\(resetText)",
+                    thread: Self.claudeThread,
+                    sound: true
+                )
+            }
 
-        // Session restored
-        if sessionPercent < 100, (lastClaudeSessionPercent ?? 0) >= 100 {
-            notify(
-                id: "claude-session-restored",
-                title: "Claude session available again",
-                body: "Session quota has reset",
-                thread: Self.claudeThread,
-                sound: true
-            )
-        }
+            // Session restored
+            if sessionPercent < 100, (lastClaudeSessionPercent ?? 0) >= 100 {
+                notify(
+                    id: "claude-session-restored",
+                    title: "Claude session available again",
+                    body: "Session quota has reset",
+                    thread: Self.claudeThread,
+                    sound: true
+                )
+            }
 
-        // Session high (90%)
-        if sessionPercent >= 90, (lastClaudeSessionPercent ?? 0) < 90 {
-            notify(
-                id: "claude-session-high",
-                title: "Claude session at \(Int(sessionPercent))%",
-                body: "Approaching session limit",
-                thread: Self.claudeThread
-            )
-        }
+            // Session high (90%)
+            if sessionPercent >= 90, (lastClaudeSessionPercent ?? 0) < 90 {
+                notify(
+                    id: "claude-session-high",
+                    title: "Claude session at \(Int(sessionPercent))%",
+                    body: "Approaching session limit",
+                    thread: Self.claudeThread
+                )
+            }
 
-        // Weekly high (80%)
-        if weeklyPercent >= 80, (lastClaudeWeeklyPercent ?? 0) < 80 {
-            notify(
-                id: "claude-weekly-high",
-                title: "Claude weekly usage at \(Int(weeklyPercent))%",
-                body: "Approaching weekly limit",
-                thread: Self.claudeThread
-            )
+            // Weekly high (80%)
+            if weeklyPercent >= 80, (lastClaudeWeeklyPercent ?? 0) < 80 {
+                notify(
+                    id: "claude-weekly-high",
+                    title: "Claude weekly usage at \(Int(weeklyPercent))%",
+                    body: "Approaching weekly limit",
+                    thread: Self.claudeThread
+                )
+            }
         }
 
         lastClaudeSessionPercent = sessionPercent
@@ -82,7 +87,7 @@ public final class NotificationManager {
             let lastPercent = lastSessionPercents[name] ?? 0
 
             // Compaction detected — large sudden drop for THIS session
-            if lastPercent >= 70, percent < 30 {
+            if contextCompactedEnabled, lastPercent >= 70, percent < 30 {
                 notify(
                     id: "openclaw-compacted-\(name)",
                     title: "\(name) — context compacted",
@@ -91,7 +96,7 @@ public final class NotificationManager {
                 )
             }
             // Context critical (85%) — about to compact at 90%
-            else if percent >= 85, lastPercent < 85 {
+            else if contextApproachingEnabled, percent >= 85, lastPercent < 85 {
                 notify(
                     id: "openclaw-critical-\(name)",
                     title: "\(name) — compaction imminent",
@@ -101,7 +106,7 @@ public final class NotificationManager {
                 )
             }
             // Context high (75%) — compaction coming
-            else if percent >= 75, lastPercent < 75 {
+            else if contextApproachingEnabled, percent >= 75, lastPercent < 75 {
                 notify(
                     id: "openclaw-high-\(name)",
                     title: "\(name) — compaction at 90%",

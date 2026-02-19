@@ -14,10 +14,13 @@ public struct SettingsView: View {
             generalTab
                 .tabItem { Label("General", systemImage: "gear") }
 
+            notificationsTab
+                .tabItem { Label("Notifications", systemImage: "bell") }
+
             connectionsTab
                 .tabItem { Label("Connections", systemImage: "network") }
         }
-        .frame(width: 360, height: 320)
+        .frame(width: 360, height: 360)
     }
 
     private var generalTab: some View {
@@ -45,7 +48,33 @@ public struct SettingsView: View {
                 .pickerStyle(.segmented)
             }
 
-            Section("Notifications") {
+        }
+        .formStyle(.grouped)
+        .padding()
+    }
+
+    private var notificationsTab: some View {
+        Form {
+            Section("Context Window") {
+                Toggle("Approaching compaction", isOn: $state.notifyContextApproaching)
+                Text("Alerts at 75% and 85% context usage")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+
+                Toggle("Compaction completed", isOn: $state.notifyContextCompacted)
+                Text("When context is compacted and drops")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+            }
+
+            Section("Claude Limits") {
+                Toggle("Session & weekly warnings", isOn: $state.notifyClaudeSession)
+                Text("Session at 90%, weekly at 80%, depleted, and restored")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+            }
+
+            Section("Sound") {
                 Toggle("Notification sounds", isOn: $state.soundsEnabled)
             }
         }

@@ -19,6 +19,20 @@ public final class AppState {
         set { UserDefaults.standard.set(newValue, forKey: "soundsEnabled") }
     }
 
+    // Notification toggles (all default ON)
+    public var notifyContextApproaching: Bool {
+        get { UserDefaults.standard.object(forKey: "notifyContextApproaching") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "notifyContextApproaching") }
+    }
+    public var notifyContextCompacted: Bool {
+        get { UserDefaults.standard.object(forKey: "notifyContextCompacted") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "notifyContextCompacted") }
+    }
+    public var notifyClaudeSession: Bool {
+        get { UserDefaults.standard.object(forKey: "notifyClaudeSession") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "notifyClaudeSession") }
+    }
+
     public init() {}
 
     public var claudeSessionPercent: Double? {
