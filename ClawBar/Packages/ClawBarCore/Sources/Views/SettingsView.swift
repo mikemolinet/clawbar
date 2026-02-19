@@ -56,13 +56,13 @@ public struct SettingsView: View {
     private var notificationsTab: some View {
         Form {
             Section("Context Window") {
-                Toggle("Approaching compaction", isOn: $state.notifyContextApproaching)
-                Text("Alerts at 75% and 85% context usage")
+                Toggle("Context memory filling up", isOn: $state.notifyContextApproaching)
+                Text("Alerts when your AI's conversation memory is getting full")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
 
-                Toggle("Compaction completed", isOn: $state.notifyContextCompacted)
-                Text("When context is compacted and drops")
+                Toggle("Memory reset", isOn: $state.notifyContextCompacted)
+                Text("When the AI summarizes older context to free up space")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
             }

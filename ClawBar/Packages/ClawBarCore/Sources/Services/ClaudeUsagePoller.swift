@@ -15,6 +15,9 @@ public final class ClaudeUsagePoller: ClaudeUsageProviding, Sendable {
 
     public func fetchUsage() async throws -> ClaudeUsage {
         let credentials = try keychainReader.readClaudeCredentials()
+        if credentials.isExpired {
+            throw ClawBarError.claudeTokenExpired
+        }
         return try await fetchWithToken(credentials.accessToken)
     }
 

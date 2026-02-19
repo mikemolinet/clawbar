@@ -63,7 +63,7 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
 
     private func startObserving() {
         // Use a timer to check for icon + size updates
-        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { [weak self] _ in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 self?.updateIconIfNeeded()
                 self?.updateMenuSize()

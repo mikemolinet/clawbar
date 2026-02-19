@@ -3,6 +3,7 @@ import Foundation
 
 public actor OpenClawConnection {
     private var webSocket: URLSessionWebSocketTask?
+    private var urlSession: URLSession?
     private var identity: DeviceIdentity?
     private var port: Int
     private var gatewayToken: String?
@@ -10,6 +11,7 @@ public actor OpenClawConnection {
     private var reconnectTask: Task<Void, Never>?
     private var receiveTask: Task<Void, Never>?
     private var sessionPollTask: Task<Void, Never>?
+    private var pingTask: Task<Void, Never>?
     private var isRunning = false
     private var isConnected = false
     private var requestCounter = 0
@@ -55,8 +57,12 @@ public actor OpenClawConnection {
         receiveTask = nil
         sessionPollTask?.cancel()
         sessionPollTask = nil
+        pingTask?.cancel()
+        pingTask = nil
         webSocket?.cancel(with: .normalClosure, reason: nil)
         webSocket = nil
+        urlSession?.invalidateAndCancel()
+        urlSession = nil
     }
 
     // MARK: - Connection
@@ -74,13 +80,15 @@ public actor OpenClawConnection {
         let url = URL(string: "ws://localhost:\(port)/ws")!
         var request = URLRequest(url: url)
         request.setValue("http://localhost:\(port)", forHTTPHeaderField: "Origin")
+        urlSession?.invalidateAndCancel()
         let session = URLSession(configuration: .default)
+        urlSession = session
         let ws = session.webSocketTask(with: request)
         webSocket = ws
         ws.resume()
 
-        receiveTask = Task { [weak self] in
-            await self?.receiveLoop()
+        receiveTask = Task {
+            await self.receiveLoop()
         }
     }
 
@@ -220,12 +228,13 @@ public actor OpenClawConnection {
 
     private func startSessionPolling() {
         sessionPollTask?.cancel()
-        sessionPollTask = Task { [weak self] in
-            while let self = self, await self.isRunning, !Task.isCancelled {
+        sessionPollTask = Task {
+            while self.isRunning, !Task.isCancelled {
                 await self.requestSessionsList()
-                try? await Task.sleep(for: .seconds(5), tolerance: .seconds(1))
+                try? await Task.sleep(for: .seconds(15), tolerance: .seconds(2))
             }
         }
+        startPingLoop()
     }
 
     private var tokenPollCounter = 0
@@ -316,6 +325,35 @@ public actor OpenClawConnection {
         return key
     }
 
+    // MARK: - WebSocket Keepalive
+
+    private func startPingLoop() {
+        pingTask?.cancel()
+        pingTask = Task {
+            while self.isRunning, !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(30), tolerance: .seconds(5))
+                guard self.isRunning, !Task.isCancelled, let ws = self.webSocket else { continue }
+                do {
+                    try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                        ws.sendPing { error in
+                            if let error {
+                                continuation.resume(throwing: error)
+                            } else {
+                                continuation.resume()
+                            }
+                        }
+                    }
+                } catch {
+                    guard self.isRunning else { return }
+                    self.isConnected = false
+                    await self.onUpdate(.disconnected)
+                    self.scheduleReconnect()
+                    return
+                }
+            }
+        }
+    }
+
     // MARK: - Reconnection
 
     private func scheduleReconnect() {
@@ -335,6 +373,7 @@ public actor OpenClawConnection {
         webSocket = nil
         receiveTask?.cancel()
         sessionPollTask?.cancel()
+        pingTask?.cancel()
         isConnected = false
         backoff = 1.0
         await connect()

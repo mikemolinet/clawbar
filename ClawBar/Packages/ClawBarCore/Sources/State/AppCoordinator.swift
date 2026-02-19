@@ -19,6 +19,7 @@ public final class AppCoordinator {
     }
 
     public func start() {
+        stop()
         syncNotificationSettings()
         startClaudePolling()
         startOpenClawConnection()

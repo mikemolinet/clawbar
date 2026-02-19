@@ -13,7 +13,10 @@ public final class AppState {
     public var lastClaudeUpdate: Date?
 
     // Settings
-    public var showUsed: Bool = true // true = "X% used", false = "X% remaining"
+    public var showUsed: Bool {
+        get { UserDefaults.standard.object(forKey: "showUsed") as? Bool ?? true }
+        set { UserDefaults.standard.set(newValue, forKey: "showUsed") }
+    }
     public var soundsEnabled: Bool {
         get { UserDefaults.standard.object(forKey: "soundsEnabled") as? Bool ?? true }
         set { UserDefaults.standard.set(newValue, forKey: "soundsEnabled") }

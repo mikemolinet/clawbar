@@ -46,6 +46,5 @@ public final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func systemDidWake(_ notification: Notification) {
         coordinator?.start()
-        coordinator?.refreshNow()
     }
 }

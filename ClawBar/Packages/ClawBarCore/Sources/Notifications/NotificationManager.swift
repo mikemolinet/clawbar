@@ -90,27 +90,27 @@ public final class NotificationManager {
             if contextCompactedEnabled, lastPercent >= 70, percent < 30 {
                 notify(
                     id: "openclaw-compacted-\(name)",
-                    title: "\(name) — context compacted",
-                    body: "Dropped from \(Int(lastPercent))% → \(Int(percent))% (\(session.formattedTokens))",
+                    title: "\(name) — session memory was reset",
+                    body: "Older context was summarized to free up space (\(Int(lastPercent))% → \(Int(percent))%)",
                     thread: Self.openClawThread
                 )
             }
-            // Context critical (85%) — about to compact at 90%
+            // Context critical (85%) — about to summarize at 90%
             else if contextApproachingEnabled, percent >= 85, lastPercent < 85 {
                 notify(
                     id: "openclaw-critical-\(name)",
-                    title: "\(name) — compaction imminent",
-                    body: "Context at \(Int(percent))% (\(session.formattedTokens))",
+                    title: "\(name) — session will summarize soon",
+                    body: "Conversation memory is almost full at \(Int(percent))%",
                     thread: Self.openClawThread,
                     sound: true
                 )
             }
-            // Context high (75%) — compaction coming
+            // Context high (75%)
             else if contextApproachingEnabled, percent >= 75, lastPercent < 75 {
                 notify(
                     id: "openclaw-high-\(name)",
-                    title: "\(name) — compaction at 90%",
-                    body: "Context at \(Int(percent))% (\(session.formattedTokens))",
+                    title: "\(name) — context memory filling up",
+                    body: "Conversation memory at \(Int(percent))% (\(session.formattedTokens))",
                     thread: Self.openClawThread
                 )
             }

@@ -44,16 +44,23 @@ public struct ClaudeUsageCard: View {
             }
 
             if status != .available {
-                HStack {
-                    Text(status.displayText)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    if let onRetry {
-                        Button("Retry") { onRetry() }
-                            .buttonStyle(.plain)
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text(status.displayText)
                             .font(.subheadline)
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+                        if let onRetry {
+                            Button("Retry") { onRetry() }
+                                .buttonStyle(.plain)
+                                .font(.subheadline)
+                                .foregroundStyle(.blue)
+                        }
+                    }
+                    if status == .tokenExpired || status == .credentialsNotFound {
+                        Text("Run `claude auth login` in Terminal")
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
                     }
                 }
             } else if let usage {
